@@ -3,19 +3,22 @@
     <style name="Theme.TchinConnect" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/tchin_green</item>
+        <item name="colorOnPrimary">@color/tchin_green</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">@color/tchin_green</item>
         <!-- Customize your theme here. -->
+
+        <!-- Navigation bar color -->
+        <item name="android:navigationBarColor">@color/tchin_green</item>
     </style>
 
     <style name="Theme.TchinConnect.NoActionBar">
-        <item name="windowActionBar">false</item>
+        <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>
     </style>
 

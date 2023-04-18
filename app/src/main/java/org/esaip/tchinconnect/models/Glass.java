@@ -1,4 +1,4 @@
-package models;
+package org.esaip.tchinconnect.models;
 
 import java.util.UUID;
 import java.util.ArrayList;

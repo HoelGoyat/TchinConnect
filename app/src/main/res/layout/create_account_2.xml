@@ -7,10 +7,13 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="wrap_content"
+        android:layout_width="333dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="Create your account"
+        android:layout_marginTop="200dp"
+        android:fontFamily="@font/inter_semibold"
+        android:text="Create your profile"
+        android:textAlignment="center"
+        android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -19,16 +22,14 @@
         android:id="@+id/firstNameInput"
         android:layout_width="300dp"
         android:layout_height="56dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="11dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginTop="220dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="600dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:hint="First Name" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -46,6 +47,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_medium"
             android:hint="Second Name" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,9 +56,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="378dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/secondNameInput">
@@ -64,7 +65,18 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="300dp"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_medium"
             android:hint="Email" />
+
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Next"
+        app:layout_constraintTop_toBottomOf="@+id/emailInput"
+        tools:layout_editor_absoluteX="106dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
