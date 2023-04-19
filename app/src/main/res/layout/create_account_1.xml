@@ -83,17 +83,23 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/button"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/create_account_1_next"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="35dp"
+        android:background="@drawable/buttons"
         android:text="Next"
+        android:textColor="#FFFFFF"
+        app:cornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailInput" />
+        app:layout_constraintTop_toBottomOf="@+id/emailInput"
+        app:rippleColor="@color/tchin_green"
+        app:strokeColor="@color/tchin_green" />
 
     <TextView
         android:id="@+id/textView"
