@@ -24,7 +24,6 @@ public class StartActivity extends AppCompatActivity {
                 Intent myIntent = new Intent(StartActivity.this, CreateAccountActivity.class);
                 //myIntent.putExtra("key", "value"); //Optional parameters
                 startActivity(myIntent);
-                System.out.println("Hey!");
             }
         });
 
