@@ -32,7 +32,7 @@
         tools:layout_editor_absoluteY="50dp" />
 
     <ImageView
-        android:id="@+id/profilePicView"
+        android:id="@+id/contactPicView"
         android:layout_width="180dp"
         android:layout_height="180dp"
         android:layout_marginTop="-90dp"
@@ -140,6 +140,6 @@
         android:text="Select a picture for your profile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profilePicView" />
+        app:layout_constraintTop_toBottomOf="@+id/contactPicView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

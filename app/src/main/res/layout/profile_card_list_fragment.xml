@@ -3,13 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/contactName"
@@ -18,11 +20,11 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="Name"
-            app:layout_constraintStart_toEndOf="@+id/profilePicView"
+            app:layout_constraintStart_toEndOf="@+id/contactPicView"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/profilePicView"
+            android:id="@+id/contactPicView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -38,7 +40,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
             android:text="Job Title"
-            app:layout_constraintStart_toEndOf="@+id/profilePicView"
+            app:layout_constraintStart_toEndOf="@+id/contactPicView"
             app:layout_constraintTop_toBottomOf="@+id/contactName" />
 
         <EditText
@@ -49,7 +51,7 @@
             android:ems="10"
             android:gravity="start|top"
             android:inputType="textMultiLine"
-            app:layout_constraintStart_toEndOf="@+id/profilePicView"
+            app:layout_constraintStart_toEndOf="@+id/contactPicView"
             app:layout_constraintTop_toBottomOf="@+id/contactJobName"
             tools:text="Job description to be shared" />
 
