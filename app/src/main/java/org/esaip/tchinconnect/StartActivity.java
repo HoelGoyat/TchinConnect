@@ -3,10 +3,13 @@ package org.esaip.tchinconnect;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.os.SystemClock;
+
+import org.esaip.tchinconnect.DBServices.UserServices;
+import org.esaip.tchinconnect.models.User;
+
+import java.util.List;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -17,15 +20,35 @@ public class StartActivity extends AppCompatActivity {
         View view = this.getWindow().getDecorView();
         view.setBackgroundColor(getResources().getColor(R.color.tchin_green));
 
+        UserServices userServices = new UserServices(getApplicationContext());
 
-        findViewById(R.id.startBackground).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent myIntent = new Intent(StartActivity.this, CreateAccountActivity.class);
-                //myIntent.putExtra("key", "value"); //Optional parameters
-                startActivity(myIntent);
-            }
-        });
+        List<User> users = userServices.getAllUsers();
+        if(users.isEmpty()){
+            findViewById(R.id.startBackground).setOnClickListener(new View.OnClickListener() {
+
+
+                @Override
+                public void onClick(View view) {
+                    Intent myIntent = new Intent(StartActivity.this, CreateAccountActivity.class);
+                    //myIntent.putExtra("key", "value"); //Optional parameters
+                    startActivity(myIntent);
+                }
+            });
+        }
+        else {
+            findViewById(R.id.startBackground).setOnClickListener(new View.OnClickListener() {
+
+
+                @Override
+                public void onClick(View view) {
+                    Intent myIntent = new Intent(StartActivity.this, CardListActivity.class);
+                    //myIntent.putExtra("key", "value"); //Optional parameters
+                    startActivity(myIntent);
+                }
+            });
+        }
+
+
 
     }
 }

@@ -21,6 +21,11 @@
         android:theme="@style/Theme.TchinConnect"
         tools:targetApi="31">
         <activity
+            android:name=".CardListActivity"
+            android:exported="false"
+            android:label="@string/title_activity_card_list"
+            android:theme="@style/Theme.TchinConnect.NoActionBar" />
+        <activity
             android:name=".StartActivity"
             android:exported="true"
             android:label="@string/app_name"
@@ -31,10 +36,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:label="@string/app_name" android:name="CreateAccountActivity"/>
+        <activity
+            android:name=".CreateAccountActivity"
+            android:label="@string/app_name" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
+
 </manifest>

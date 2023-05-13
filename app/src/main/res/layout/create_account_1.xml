@@ -12,7 +12,7 @@
         android:layout_height="332dp"
         android:layout_marginBottom="250dp"
         android:background="@color/tchin_green"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/createAccountSelectPicture"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -53,6 +53,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/createAccountFirstNameInput"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"></LinearLayout>
@@ -87,7 +88,7 @@
         app:layout_constraintTop_toBottomOf="@+id/firstNameInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/secondNameInput"
+            android:id="@+id/createAccountSecondNameInput"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter_medium"
@@ -106,7 +107,7 @@
         app:layout_constraintTop_toBottomOf="@+id/secondNameInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/emailInput"
+            android:id="@+id/createAccountEmailInput"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter_medium"
@@ -133,7 +134,7 @@
         app:strokeColor="@color/tchin_green" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/createAccountSelectPicture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
