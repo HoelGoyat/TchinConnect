@@ -15,6 +15,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import org.esaip.tchinconnect.models.Card;
 import org.esaip.tchinconnect.models.DAO.AppDatabase;
+import org.esaip.tchinconnect.models.DAO.CardDao;
 import org.esaip.tchinconnect.models.DAO.UserDao;
 import org.esaip.tchinconnect.models.User;
 
@@ -30,6 +31,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         AppDatabase db = Room.databaseBuilder(getApplicationContext(),
                 AppDatabase.class, "tchinDB").build();
         UserDao userDao = db.userDao();
+        CardDao cardDao = db.cardDao();
 
 
 
@@ -77,21 +79,22 @@ public class CreateAccountActivity extends AppCompatActivity {
 
 
                         Card mainUserCard = new Card();
+                        User mainUser = new User();
+
+                        mainUser.setPersonalCardId(mainUserCard.getUserID());
 
                         mainUserCard.setName(strFName);
-                        mainUserCard.setName(strLName);
+                        mainUserCard.setSurname(strLName);
                         mainUserCard.setEmail(strEmail);
                         mainUserCard.setJob(strJobTitle);
                         mainUserCard.setJobDescription(strJobDescr);
                         mainUserCard.setImage(strPictu);
-
-                        User mainUser = new User();
-
-                        mainUser.setPersonalCardID(mainUserCard.getUserID());
+                        mainUserCard.setUserID(mainUser.getID());
 
 
                         AsyncTask.execute(() -> {
                             userDao.insert(mainUser);
+                            cardDao.insert(mainUserCard);
                         });
 
                         Intent myIntent = new Intent(CreateAccountActivity.this, CardListActivity.class);

@@ -22,20 +22,20 @@ public class User {
     private UUID ID;
     //private Glass glass;
     @ColumnInfo(name="personal_card_id")
-    private UUID personalCardID;
+    private UUID personalCardId;
     //private ArrayList<Card> annuary;
 
     public User(UUID ID, /*Glass glass,*/ UUID personalCardID/*, ArrayList<Card> annuary*/) {
         this.ID = ID;
         //this.glass = glass;
-        this.personalCardID = personalCardID;
+        this.personalCardId = personalCardID;
         //this.annuary = annuary;
     }
 
     public User() {
         this.ID = UUID.randomUUID();
         //this.glass = null;
-        this.personalCardID = null;
+        this.personalCardId = null;
         //this.annuary = null;
     }
 
@@ -58,12 +58,12 @@ public class User {
         this.glass = glass;
     }*/
 
-    public UUID getPersonalCardID() {
-        return personalCardID;
+    public UUID getPersonalCardId() {
+        return personalCardId;
     }
 
-    public void setPersonalCardID(UUID personalCard) {
-        this.personalCardID = personalCard;
+    public void setPersonalCardId(UUID personalCardId) {
+        this.personalCardId = personalCardId;
     }
 
     /*public ArrayList<Card> getAnnuary() {

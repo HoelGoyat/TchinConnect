@@ -3,6 +3,7 @@ package org.esaip.tchinconnect.models.DAO;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
+import androidx.room.Query;
 
 import org.esaip.tchinconnect.models.Card;
 import org.esaip.tchinconnect.models.User;
@@ -18,13 +19,13 @@ public interface CardDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Card card);
 
-    //@Query("DELETE FROM word_table")
+    @Query("DELETE FROM Card")
     void deleteAll();
 
-    //@Query("SELECT * FROM word_table ORDER BY word ASC")
-    List<Card> getCard();
+    @Query("SELECT * FROM Card")
+    List<Card> getCards();
 
-    //@Query("SELECT * FROM ")
+    @Query("SELECT * FROM Card WHERE user_id IS :userId")
     Card getCardByUserId(UUID userId);
 
 
