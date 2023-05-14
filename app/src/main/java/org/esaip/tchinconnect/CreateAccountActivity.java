@@ -87,7 +87,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
                         User mainUser = new User();
 
-                        mainUser.setPersonalCard(mainUserCard);
+                        mainUser.setPersonalCardID(mainUserCard.getUserID());
 
 
                         AsyncTask.execute(() -> {

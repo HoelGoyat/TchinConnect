@@ -11,28 +11,31 @@ import androidx.room.PrimaryKey;
 import java.util.UUID;
 import java.util.ArrayList;
 
-@Entity(tableName = "users")
+@Entity(tableName = "users", foreignKeys = @ForeignKey(entity = Card.class,
+        parentColumns = "user_id",
+        childColumns = "personal_card_id",
+        onDelete = 1))//NO_ACTION
 public class User {
 
     @PrimaryKey
     @NonNull
     private UUID ID;
     //private Glass glass;
-    @Embedded
-    private Card personalCard;
+    @ColumnInfo(name="personal_card_id")
+    private UUID personalCardID;
     //private ArrayList<Card> annuary;
 
-    public User(UUID ID, /*Glass glass,*/ Card personalCard/*, ArrayList<Card> annuary*/) {
+    public User(UUID ID, /*Glass glass,*/ UUID personalCardID/*, ArrayList<Card> annuary*/) {
         this.ID = ID;
         //this.glass = glass;
-        this.personalCard = personalCard;
+        this.personalCardID = personalCardID;
         //this.annuary = annuary;
     }
 
     public User() {
         this.ID = UUID.randomUUID();
         //this.glass = null;
-        this.personalCard = null;
+        this.personalCardID = null;
         //this.annuary = null;
     }
 
@@ -55,12 +58,12 @@ public class User {
         this.glass = glass;
     }*/
 
-    public Card getPersonalCard() {
-        return personalCard;
+    public UUID getPersonalCardID() {
+        return personalCardID;
     }
 
-    public void setPersonalCard(Card personalCard) {
-        this.personalCard = personalCard;
+    public void setPersonalCardID(UUID personalCard) {
+        this.personalCardID = personalCard;
     }
 
     /*public ArrayList<Card> getAnnuary() {

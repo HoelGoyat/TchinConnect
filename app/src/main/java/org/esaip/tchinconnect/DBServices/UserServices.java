@@ -20,7 +20,9 @@ public class UserServices{
 
     public UserServices(Context context){
         this.db = Room.databaseBuilder(context,
-                AppDatabase.class, "tchinDB").build();
+            AppDatabase.class, "tchinDB")
+                .fallbackToDestructiveMigration()
+                .build();
     }
 
     public List<User> getAllUsers(){

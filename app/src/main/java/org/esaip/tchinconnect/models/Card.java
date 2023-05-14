@@ -1,5 +1,7 @@
 package org.esaip.tchinconnect.models;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
@@ -10,6 +12,8 @@ import java.util.UUID;
 public class Card {
 
     @PrimaryKey
+    @ColumnInfo(name="user_id")
+    @NonNull
     UUID userID;
     private String name;
     private String surname;
@@ -30,7 +34,7 @@ public class Card {
     }
 
     public Card() {
-        this.userID = UUID.randomUUID();
+        this.userID = null;
         this.name = null;
         this.surname = null;
         this.email = null;
