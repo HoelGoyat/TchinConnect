@@ -26,8 +26,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import org.esaip.tchinconnect.OnBluetoothDeviceClickedListener;
+import org.esaip.tchinconnect.models.Card;
+import org.esaip.tchinconnect.models.DAO.AppDatabase;
+import org.esaip.tchinconnect.models.DAO.CardDao;
+import org.esaip.tchinconnect.models.DAO.UserDao;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,6 +45,8 @@ public class SettingActivity extends AppCompatActivity implements OnBluetoothDev
     // Element de la vue activity_main
     private Button scan;
     private RecyclerView recyclerView;
+
+    private CardDao cardDao;
 
 
     // Constante pour permissions
@@ -86,7 +93,9 @@ public class SettingActivity extends AppCompatActivity implements OnBluetoothDev
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
-
+        AppDatabase db = Room.databaseBuilder(getApplicationContext(),
+                AppDatabase.class, "tchinDB").allowMainThreadQueries().build();
+        cardDao = db.cardDao();
         initView();
         requestPermissions();
         initData();
@@ -372,8 +381,15 @@ public class SettingActivity extends AppCompatActivity implements OnBluetoothDev
                     Log.i("MainActivity", "Get string : " + stringBuilder.toString());
 
                     if(stringBuilder.toString().equals("init")){
-                        showMsg(stringBuilder.toString());
-                        sendQueue.add("ready".getBytes());
+                        //showMsg(stringBuilder.toString());
+                        Card userCard = cardDao.getCardUser();
+                        String ProfilToSend = "$" + userCard.getName() +
+                                "#" + userCard.getSurname() +
+                                "#" + userCard.getEmail() +
+                                "#" + userCard.getJob() +
+                                "#" + userCard.getJobDescription() +
+                                "#" + userCard.getImage();
+                        sendQueue.add(ProfilToSend.getBytes());
                         btSendBytes();
                     }
 
@@ -394,6 +410,12 @@ public class SettingActivity extends AppCompatActivity implements OnBluetoothDev
 
                     if(stringBuilder.toString().startsWith("!")){
                         nbPaquet = Integer.parseInt(stringBuilder.toString().split("!")[1]);
+                    }
+
+                    if(nbPaquet == 0){
+                        showMsg("Carte de visite recu depuis le Verre Connecté !");
+                        SettingActivity.this.setResult(Activity.RESULT_OK, new Intent());
+                        finish(); // retour a l'acceuil
                     }
 
 
@@ -462,9 +484,12 @@ public class SettingActivity extends AppCompatActivity implements OnBluetoothDev
             String[] profils_array = msg.split("\\$");
             profils_array = Arrays.copyOfRange(profils_array, 1, profils_array.length);
             Profil profil;
+            Card cardReceived;
             for (String elements : profils_array) {
                 String[] element = elements.split("#");
                 profil = new Profil(element[0], element[1], element[2], element[3], element[4], element[5]);
+                cardReceived = new Card(null,element[0], element[1], element[2], element[3], element[4], element[5]);
+                cardDao.insert(cardReceived);
                 Log.i("MainActivity", "First Name : " + profil.getFirstName());
                 Log.i("MainActivity", "Picture : " + profil.getPicture());
 

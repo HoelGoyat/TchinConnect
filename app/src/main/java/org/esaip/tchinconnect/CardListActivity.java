@@ -58,11 +58,15 @@ public class CardListActivity extends AppCompatActivity implements CardAdapter.I
         startActivity(myIntent);
     }
 
-
-
-
     public void goSettingActivity(View view) {
         Intent myIntent = new Intent(this, SettingActivity.class);
-        startActivity(myIntent);
+        startActivityForResult(myIntent, 1);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        finish();
+        startActivity(getIntent());
     }
 }

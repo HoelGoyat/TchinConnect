@@ -110,7 +110,7 @@ public class CardServices{
     {
         @Override
         protected Card doInBackground(Void... url) {
-            return db.cardDao().getCardUser().get(0);
+            return db.cardDao().getCardUser();
         }
     }
 
