@@ -107,7 +107,7 @@
             android:fontFamily="@font/inter_medium"
             android:gravity="start|top"
             android:inputType="none"
-            android:text="If you recently toasted and some cards not appear synchronize your device"
+            android:text="If you recently toasted and some cards do not appear synchronize your device"
             android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

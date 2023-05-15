@@ -2,6 +2,7 @@ package org.esaip.tchinconnect;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -22,14 +23,15 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.profile);
         getSupportActionBar().hide();
 
+        Intent intent = getIntent();
+
+        UUID.fromString(intent.getStringExtra("card_id").toString());
 
 
-        UserServices userServices = new UserServices(getApplicationContext());
         CardServices cardServices = new CardServices(getApplicationContext());
 
-        User user = userServices.getAllUsers().get(0);
 
-        Card userCard = cardServices.getCardByUserId(user.getID());
+        Card userCard = cardServices.getCardById(UUID.fromString(intent.getStringExtra("card_id")));
 
         TextView userNames = (TextView) findViewById(R.id.profileUserNames);
         userNames.setText(userCard.getName() +" "+ userCard.getSurname().toUpperCase());

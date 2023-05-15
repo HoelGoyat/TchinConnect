@@ -22,6 +22,7 @@ import java.util.List;
 public class CardListActivity extends AppCompatActivity implements CardAdapter.ItemClickListener {
 
     CardAdapter adapter;
+    public List<Card> cardList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,31 +30,32 @@ public class CardListActivity extends AppCompatActivity implements CardAdapter.I
         setContentView(R.layout.card_list);
 
         CardServices cardServices = new CardServices(getApplicationContext());
-        ArrayList<Card> cards = (ArrayList<Card>) cardServices.getAllCards();
+        this.cardList = cardServices.getContacts();
+
+        Card userCard = cardServices.getUserCard();
 
 
 
         TextView profileLink = (TextView) findViewById(R.id.profileCardListProfileLink);
-        profileLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent myIntent = new Intent(CardListActivity.this, ProfileActivity.class);
-                //myIntent.putExtra("key", "value"); //Optional parameters
-                startActivity(myIntent);
-            }
+        profileLink.setOnClickListener(view -> {
+            Intent myIntent = new Intent(CardListActivity.this, ProfileActivity.class);
+            myIntent.putExtra("card_id", userCard.getCardID().toString());
+            startActivity(myIntent);
         });
 
         // set up the RecyclerView
         RecyclerView recyclerView = findViewById(R.id.cardListRecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new CardAdapter(this, cards);
+        adapter = new CardAdapter(this, cardList);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
 
     }
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(this, "You clicked " + this.adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
+        Intent myIntent = new Intent(CardListActivity.this, ProfileActivity.class);
+        myIntent.putExtra("card_id", this.cardList.get(position).getCardID().toString());
+        startActivity(myIntent);
     }
 
 

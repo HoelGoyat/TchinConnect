@@ -31,6 +31,12 @@ public interface CardDao {
     @Query("SELECT * FROM cards WHERE user_id IS :userId")
     Card getCardByUserId(UUID userId);
 
+    @Query("SELECT * FROM cards WHERE card_id IS :cardId")
+    Card getCardById(UUID cardId);
+
+    @Query("SELECT * FROM cards WHERE user_id IS NULL")
+    List<Card> getContacts();
+
 
 
 }

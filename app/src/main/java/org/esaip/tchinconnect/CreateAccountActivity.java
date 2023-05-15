@@ -95,6 +95,18 @@ public class CreateAccountActivity extends AppCompatActivity {
                         AsyncTask.execute(() -> {
                             userDao.insert(mainUser);
                             cardDao.insert(mainUserCard);
+
+                            /*
+                            Card random = new Card();
+                            random.setName("g");
+                            random.setSurname("g");
+                            cardDao.insert(random);
+
+                            Card random2 = new Card();
+                            random2.setName("g2");
+                            random2.setSurname("g2");
+                            cardDao.insert(random2);
+                            */
                         });
 
                         Intent myIntent = new Intent(CreateAccountActivity.this, CardListActivity.class);

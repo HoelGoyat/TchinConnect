@@ -49,6 +49,42 @@ public class CardServices{
         }
     }
 
+    public Card getUserCard(){
+        try {
+            return new GetUserCardAsyncTask().execute().get();
+        } catch (ExecutionException e) {
+            //throw new RuntimeException(e);
+            return new Card();
+        } catch (InterruptedException e) {
+            //throw new RuntimeException(e);
+            return new Card();
+        }
+    }
+
+    public Card getCardById(UUID cardId){
+        try {
+            return new GetCardByIdAsyncTask(cardId).execute().get();
+        } catch (ExecutionException e) {
+            //throw new RuntimeException(e);
+            return new Card();
+        } catch (InterruptedException e) {
+            //throw new RuntimeException(e);
+            return new Card();
+        }
+    }
+
+    public List<Card> getContacts(){
+        try {
+            return new GetContactsAsyncTask().execute().get();
+        } catch (ExecutionException e) {
+            //throw new RuntimeException(e);
+            return new ArrayList<>();
+        } catch (InterruptedException e) {
+            //throw new RuntimeException(e);
+            return new ArrayList<>();
+        }
+    }
+
 
     private class GetCardsAsyncTask extends AsyncTask<Void, Void,List<Card>>
     {
@@ -69,4 +105,33 @@ public class CardServices{
             return db.cardDao().getCardByUserId(this.userId);
         }
     }
+
+    private class GetUserCardAsyncTask extends AsyncTask<Void, Void,Card>
+    {
+        @Override
+        protected Card doInBackground(Void... url) {
+            return db.cardDao().getCardUser().get(0);
+        }
+    }
+
+    private class GetCardByIdAsyncTask extends AsyncTask<Void, Void,Card>
+    {
+        private UUID cardId;
+
+        public GetCardByIdAsyncTask(UUID cardId){this.cardId = cardId;}
+        @Override
+        protected Card doInBackground(Void... url) {
+            return db.cardDao().getCardById(this.cardId);
+        }
+    }
+
+    private class GetContactsAsyncTask extends AsyncTask<Void, Void,List<Card>>
+    {
+        @Override
+        protected List<Card> doInBackground(Void... url) {
+            return db.cardDao().getContacts();
+        }
+    }
+
+
 }
