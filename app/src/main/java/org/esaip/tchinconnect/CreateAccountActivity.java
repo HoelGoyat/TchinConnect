@@ -98,7 +98,6 @@ public class CreateAccountActivity extends AppCompatActivity {
                         });
 
                         Intent myIntent = new Intent(CreateAccountActivity.this, CardListActivity.class);
-                        //myIntent.putExtra("key", "value"); //Optional parameters
                         startActivity(myIntent);
                     }
                 });

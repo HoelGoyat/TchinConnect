@@ -30,7 +30,6 @@ public class StartActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent myIntent = new Intent(StartActivity.this, CreateAccountActivity.class);
-                    //myIntent.putExtra("key", "value"); //Optional parameters
                     startActivity(myIntent);
                 }
             });
@@ -42,7 +41,6 @@ public class StartActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent myIntent = new Intent(StartActivity.this, CardListActivity.class);
-                    //myIntent.putExtra("key", "value"); //Optional parameters
                     startActivity(myIntent);
                 }
             });
