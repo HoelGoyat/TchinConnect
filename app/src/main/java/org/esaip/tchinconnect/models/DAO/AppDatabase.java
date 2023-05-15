@@ -6,7 +6,7 @@ import androidx.room.RoomDatabase;
 import org.esaip.tchinconnect.models.Card;
 import org.esaip.tchinconnect.models.User;
 
-@Database(entities = {User.class, Card.class}, version = 3)
+@Database(entities = {User.class, Card.class}, version = 4)
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDao userDao();
     public abstract CardDao cardDao();

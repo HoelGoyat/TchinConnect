@@ -19,13 +19,13 @@ public interface CardDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Card card);
 
-    @Query("DELETE FROM Card")
+    @Query("DELETE FROM cards")
     void deleteAll();
 
-    @Query("SELECT * FROM Card")
+    @Query("SELECT * FROM cards")
     List<Card> getCards();
 
-    @Query("SELECT * FROM Card WHERE user_id IS :userId")
+    @Query("SELECT * FROM cards WHERE user_id IS :userId")
     Card getCardByUserId(UUID userId);
 
 

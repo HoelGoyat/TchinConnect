@@ -8,13 +8,20 @@ import androidx.room.PrimaryKey;
 
 import java.util.UUID;
 
-@Entity
+@Entity(tableName ="cards", foreignKeys = @ForeignKey(entity = User.class,
+        parentColumns = "id",
+        childColumns = "user_id",
+        onDelete = 1))//NO_ACTION
 public class Card {
 
+
+    @ColumnInfo(name="user_id", index = true)
+    private UUID userID;
+
     @PrimaryKey
-    @ColumnInfo(name="user_id")
     @NonNull
-    UUID userID;
+    @ColumnInfo(name = "card_id", index = true)
+    private UUID cardID;
     private String name;
     private String surname;
     private String email;
@@ -24,6 +31,7 @@ public class Card {
     private String image;
 
     public Card(UUID newUserID,String newName, String newSurname, String newEmail, String newJob, String newJobDescription, String newImage){
+        this.cardID = UUID.randomUUID();
         this.userID = newUserID;
         this.name = newName;
         this.surname = newSurname;
@@ -34,6 +42,7 @@ public class Card {
     }
 
     public Card() {
+        this.cardID = UUID.randomUUID();
         this.userID = null;
         this.name = null;
         this.surname = null;
@@ -44,6 +53,9 @@ public class Card {
     }
 
     // Getters and Setters
+
+    public UUID getCardID(){return cardID;}
+    public void setCardID(UUID newID){this.cardID = newID;}
     public UUID getUserID() {
         return userID;
     }

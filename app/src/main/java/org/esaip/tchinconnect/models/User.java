@@ -11,17 +11,15 @@ import androidx.room.PrimaryKey;
 import java.util.UUID;
 import java.util.ArrayList;
 
-@Entity(tableName = "users", foreignKeys = @ForeignKey(entity = Card.class,
-        parentColumns = "user_id",
-        childColumns = "personal_card_id",
-        onDelete = 1))//NO_ACTION
+@Entity(tableName = "users")
 public class User {
 
     @PrimaryKey
     @NonNull
+    @ColumnInfo(name = "id")
     private UUID ID;
     //private Glass glass;
-    @ColumnInfo(name="personal_card_id")
+    @ColumnInfo(name="personal_card_id",index = true)
     private UUID personalCardId;
     //private ArrayList<Card> annuary;
 

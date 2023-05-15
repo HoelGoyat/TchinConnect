@@ -74,8 +74,8 @@ public class CreateAccountActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         //second layout inputs
-                        String strJobTitle = String.valueOf(jobTitle);
-                        String strJobDescr = String.valueOf(jobDescr);
+                        String strJobTitle = String.valueOf(jobTitle.getText());
+                        String strJobDescr = String.valueOf(jobDescr.getText());
 
 
                         Card mainUserCard = new Card();
