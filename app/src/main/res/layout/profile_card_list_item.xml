@@ -17,7 +17,7 @@
             android:id="@+id/contactName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:text="Name"
             app:layout_constraintStart_toEndOf="@+id/contactPicView"
@@ -37,20 +37,21 @@
             android:id="@+id/contactJobName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="Job Title"
+            android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/contactPicView"
             app:layout_constraintTop_toBottomOf="@+id/contactName" />
 
-        <EditText
+        <TextView
             android:id="@+id/contactJobDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:ems="10"
             android:gravity="start|top"
-            android:inputType="textMultiLine"
             app:layout_constraintStart_toEndOf="@+id/contactPicView"
             app:layout_constraintTop_toBottomOf="@+id/contactJobName"
             tools:text="Job description to be shared" />
